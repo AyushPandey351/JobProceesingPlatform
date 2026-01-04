@@ -1,3 +1,6 @@
+<img width="1607" height="884" alt="Screenshot (36)" src="https://github.com/user-attachments/assets/e3b48d54-862d-45ae-b10c-139040e0e7f5" />
+
+
 # Scalable Background Job Processing Platform
 
 A robust, self-healing background job processing engine built with Spring Boot, PostgreSQL, and Redis. This platform allows you to create, schedule, and monitor long-running tasks via a real-time dashboard.
