@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Platform Console</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-layer-group"></i> Job Platform Console</h1>
+            <button onclick="openModal()"><i class="fas fa-plus"></i> New Job</button>
+        </header>
+
+        <div class="stats-grid">
+            <div class="card">
+                <div class="stat-label">Active Jobs</div>
+                <div class="stat-value" id="stat-active">-</div>
+            </div>
+            <div class="card">
+                <div class="stat-label">Completed</div>
+                <div class="stat-value" id="stat-completed" style="color: var(--success)">-</div>
+            </div>
+            <div class="card">
+                <div class="stat-label">Failed</div>
+                <div class="stat-value" id="stat-failed" style="color: var(--danger)">-</div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2 style="margin-bottom: 1rem; font-size: 1.1rem; color: var(--text-secondary);">Recent Jobs</h2>
+            <div class="job-list" id="job-list">
+                <!-- Job Items Injected Here -->
+                <div style="padding: 2rem; text-align: center; color: var(--text-secondary);">Loading...</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Create Job Modal -->
+    <div class="modal-overlay" id="modal">
+        <div class="modal">
+            <h2 style="margin-bottom: 1.5rem">Create New Job</h2>
+            <form id="create-job-form" onsubmit="createJob(event)">
+                <div class="form-group">
+                    <label>Job Type</label>
+                    <select name="type" required>
+                        <option value="REPORT_GENERATION">Report Generation</option>
+                        <option value="DATA_SYNC">Data Sync</option>
+                        <option value="EMAIL_NOTIFICATION">Email Notification</option>
+                        <option value="FAIL_ONCE">Fail Once (Test Retry)</option>
+                        <option value="ALWAYS_FAIL">Always Fail (Test DLQ)</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Payload (JSON)</label>
+                    <textarea name="payload">{}</textarea>
+                </div>
+                <div class="form-group">
+                    <label>Schedule Delay (Seconds)</label>
+                    <input type="number" name="delay" placeholder="0 for immediate">
+                </div>
+                <div class="modal-actions">
+                    <button type="button" class="btn-secondary" onclick="closeModal()">Cancel</button>
+                    <button type="submit">Create Job</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
